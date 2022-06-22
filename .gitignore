@@ -14,3 +14,5 @@ allen_reference_*.csv
 
 # PyCharm
 .idea/
+activate_venv
+.venv/
