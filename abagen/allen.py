@@ -627,6 +627,8 @@ def get_samples_in_mask(mask=None, **kwargs):
         annot = data['annotation']
         if kwargs.get('corrected_mni', True):
             annot = samples_.update_mni_coords(annot)
+        else:
+            annot = pd.read_csv(annot)
         files[donor]['annotation'] = annot
     cols = ['well_id', 'mni_x', 'mni_y', 'mni_z']
     coords = np.asarray(pd.concat(flatten_dict(files, 'annotation'))[cols])
