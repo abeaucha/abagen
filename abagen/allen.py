@@ -425,7 +425,7 @@ def get_expression_data(atlas,
                                        native_space=t1w)
         if lr_mirror is not None:
             annot = samples_.mirror_samples(annot, ontol, swap=lr_mirror)
-        annot = samples_.drop_mismatch_samples(annot, ontol)
+        #annot = samples_.drop_mismatch_samples(annot, ontol)
         if sim_threshold is not None:
             annot = samples_.similarity_threshold(data['microarray'],
                                                   annot, probe_info,
@@ -654,6 +654,7 @@ def get_samples_in_mask(mask=None, **kwargs):
 
     # get expression data + drop sample coordinates that weren't in atlas
     exp = get_expression_data(**kwargs)
+
     if kwargs.get('return_donors'):
         exp = {
             donor: micro.drop(index=[0], level='label', errors='ignore')
